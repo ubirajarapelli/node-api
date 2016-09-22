@@ -1,15 +1,14 @@
 import passport from "passport";
-
 import {Strategy, ExtractJwt} from "passport-jwt";
 
 module.exports = app => {
-  const User = app.db.models.Users;
+  const Users = app.db.models.Users;
   const cfg = app.libs.config;
   const params = {
     secretOrKey: cfg.jwtSecret,
-    jtwFromrequest: ExtractJwt.fromAuthHeader()
+    jwtFromRequest: ExtractJwt.fromAuthHeader()
   };
-  const strategy = new Strategy( params, (playload, done) => {
+  const strategy = new Strategy(params, (playload, done) => {
     Users.findById(payload.id)
     .then(user => {
       if(user) {
@@ -18,16 +17,17 @@ module.exports = app => {
           email: user.email
         });
       }
-      return done(null, false)
+      return done(null, false);
     })
     .catch(error => done(error, null));
   });
+
   passport.use(strategy);
   return {
     initialize: () => {
       return passport.initialize();
     },
-    authenticate: = () =>{
+    authenticate: () => {
       return passport.authenticate("jwt", cfg.jwtSession);
     }
   };
