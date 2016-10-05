@@ -9,7 +9,6 @@ module.exports = {
       underscored: true
     }
   },
-  // jwtSecret: "Nta$K-Ap1",
-  jwtSecret: "NTASK_API",
+  jwtSecret: "Nta$K-Ap1",
   jwtSession: {session: false}
 };

@@ -16,7 +16,7 @@ module.exports = app => {
     db = {
       sequelize,
       Sequelize,
-      models : {}
+      models: {}
     };
     const dir = path.join(__dirname, "models");
     fs.readdirSync(dir).forEach(file => {
